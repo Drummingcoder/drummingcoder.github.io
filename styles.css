@@ -69,10 +69,25 @@ nav {
 
 /* Hero Section */
 .hero {
-    background: var(--gradient);
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 50%, var(--light-purple) 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
     color: var(--white);
-    padding: 120px 0 80px;
+    padding: 160px 0 120px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%);
+    pointer-events: none;
 }
 
 .hero h1 {
@@ -293,6 +308,18 @@ footer {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
     }
 }
 
